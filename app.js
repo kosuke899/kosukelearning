@@ -50,7 +50,7 @@
   };
   const navItems = [
     ["home", "⌂", "Home"], ["learn", "▦", "Learn"], ["learnGPT", "✳", "learnGPT"],
-    ["notes", "▤", "Notes"], ["league", "♛", "Weekly league"], ["people", "⌕", "Find people"], ["shop", "◇", "Shop"],
+    ["notes", "▤", "Notes"], ["publicStudies", "↗", "Public studies"], ["league", "♛", "Weekly league"], ["people", "⌕", "Find people"], ["shop", "◇", "Shop"],
   ];
   const defaultState = {
     page: "home", profile: null, progress: {}, notes: { title: "", text: "", image: "" },
@@ -584,6 +584,27 @@
       <div class="section-heading"><div><h2>About your account</h2><p>A few things to know before you get started.</p></div></div>
       <div class="empty-state">Profiles are stored only in this browser and are not protected by a server. Other devices cannot see these profiles or your progress. Passwords are hashed locally, but this prototype is not suitable for sensitive information.</div>`;
   }
+  function publicStudiesHTML() {
+  return `<span class="eyebrow">A shared learning space</span>
+    <h1 class="page-title">Public studies.</h1>
+    <p class="page-subtitle">Read and contribute to the shared study page. Keep it welcoming, useful, and focused on learning.</p>
+    <section class="card" style="margin-top:22px;text-align:center">
+      <h2>Open the public studies page</h2>
+      <p>Share explanations, notes, and study ideas to help others learn.</p>
+      <a class="primary-btn" href="https://app.notion.com/p/3f4581be9d3a8013920fd72f8eba70bf?source=copy_link" target="_blank" rel="noopener noreferrer">Open in Notion ↗</a>
+    </section>
+    <section class="empty-state" style="margin-top:16px">
+      <h2>Guidelines for everyone</h2>
+      <ul>
+        <li>Use this page for learning and sharing helpful study material.</li>
+        <li>Please do not randomly or irresponsibly delete another person’s study or edits.</li>
+        <li>If you spot a mistake, leave a respectful comment explaining it, or make a careful correction that preserves the useful work.</li>
+        <li>Keep contributions respectful, relevant, and safe. Do not add private information or unrelated content.</li>
+        <li>Disruptive or harmful content or behaviour may be removed and reported.</li>
+      </ul>
+      <p><strong>Note:</strong> Notion controls who can view, comment on, or edit the page. Public editing may let visitors change or delete content.</p>
+    </section>`;
+}
   function modalHTML() {
     if (state.modalMode === "avatar") {
       return `<div class="modal-backdrop" data-action="close-modal-backdrop"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="auth-title"><button class="modal-close" data-action="close-modal" aria-label="Close">×</button>
@@ -622,6 +643,7 @@
     else if (state.page === "notes") content = notesHTML();
     else if (state.page === "league") content = leagueHTML();
     else if (state.page === "people") content = profileSearchHTML();
+    else if (state.page === "publicStudies") content = publicStudiesHTML();
     else if (state.page === "shop") content = shopHTML();
     else content = profileHTML();
     root.innerHTML = shellHTML(content);
